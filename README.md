@@ -1,6 +1,5 @@
 # Hack Technology / Project Attempted
 
-
 ## What you built? 
 
 TODO: Short description of what you attempted to build
@@ -18,8 +17,10 @@ TODO: what worked / what didn't work
 
 ## Authors
 
-TODO: list of authors
+* Maria Mora Bolaños
 
 ## Acknowledgments
 
-TODO: cite any tutorials followed here
+Based on Apple's "Introducing SwiftUI"
+tutorial found:
+https://developer.apple.com/tutorials/swiftui#swiftui-essentials
