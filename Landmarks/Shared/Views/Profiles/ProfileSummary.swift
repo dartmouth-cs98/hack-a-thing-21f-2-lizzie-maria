@@ -7,47 +7,57 @@
 
 import SwiftUI
 
-struct ProfileEditor: View {
-    @Binding var profile: Profile
-
-    var dateRange: ClosedRange<Date> {
-        let min = Calendar.current.date(byAdding: .year, value: -1, to: profile.goalDate)!
-        let max = Calendar.current.date(byAdding: .year, value: 1, to: profile.goalDate)!
-        return min...max
-    }
+struct ProfileSummary: View {
+    @EnvironmentObject var modelData: ModelData
+    var profile: Profile
 
     var body: some View {
-        List {
-            HStack {
-                Text("Username").bold()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(profile.username)
+                    .bold()
+                    .font(.title)
+
+                Text("Notifications: \(profile.prefersNotifications ? "On": "Off" )")
+                Text("Seasonal Photos: \(profile.seasonalPhoto.rawValue)")
+                Text("Goal Date: ") + Text(profile.goalDate, style: .date)
+
                 Divider()
-                TextField("Username", text: $profile.username)
-            }
 
-            Toggle(isOn: $profile.prefersNotifications) {
-                Text("Enable Notifications").bold()
-            }
+                VStack(alignment: .leading) {
+                    Text("Completed Badges")
+                        .font(.headline)
 
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Seasonal Photo").bold()
-
-                Picker("Seasonal Photo", selection: $profile.seasonalPhoto) {
-                    ForEach(Profile.Season.allCases) { season in
-                        Text(season.rawValue).tag(season)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            HikeBadge(name: "First Hike")
+                            HikeBadge(name: "Earth Day")
+                                .hueRotation(Angle(degrees: 90))
+                            HikeBadge(name: "Tenth Hike")
+                                .grayscale(0.5)
+                                .hueRotation(Angle(degrees: 45))
+                        }
+                        .padding(.bottom)
                     }
                 }
-                .pickerStyle(SegmentedPickerStyle())
-            }
 
-            DatePicker(selection: $profile.goalDate, in: dateRange, displayedComponents: .date) {
-                Text("Goal Date").bold()
+                Divider()
+
+                VStack(alignment: .leading) {
+                    Text("Recent Hikes")
+                        .font(.headline)
+
+                    HikeView(hike: modelData.hikes[0])
+                }
             }
+            .padding()
         }
     }
 }
 
-struct ProfileEditor_Previews: PreviewProvider {
+struct ProfileSummary_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditor(profile: .constant(.default))
+        ProfileSummary(profile: Profile.default)
+            .environmentObject(ModelData())
     }
 }
