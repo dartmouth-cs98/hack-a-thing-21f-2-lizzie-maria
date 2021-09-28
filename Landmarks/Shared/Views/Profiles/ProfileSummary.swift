@@ -7,58 +7,47 @@
 
 import SwiftUI
 
-struct ProfileSummary: View {
-    @EnvironmentObject var modelData: ModelData
-    var profile: Profile
+struct ProfileEditor: View {
+    @Binding var profile: Profile
+
+    var dateRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .year, value: -1, to: profile.goalDate)!
+        let max = Calendar.current.date(byAdding: .year, value: 1, to: profile.goalDate)!
+        return min...max
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(profile.username)
-                    .bold()
-                    .font(.title)
-
-                Text("Notifications: \(profile.prefersNotifications ? "On": "Off" )")
-                Text("Seasonal Photos: \(profile.seasonalPhoto.rawValue)")
-                Text("Goal Date: ") + Text(profile.goalDate, style: .date)
-
+        List {
+            HStack {
+                Text("Username").bold()
                 Divider()
+                TextField("Username", text: $profile.username)
+            }
 
-                VStack(alignment: .leading) {
-                    Text("Completed Badges")
-                        .font(.headline)
+            Toggle(isOn: $profile.prefersNotifications) {
+                Text("Enable Notifications").bold()
+            }
 
-                    ScrollView(.horizontal) {
-                        HStack {
-                            HikeBadge(name: "First Hike")
-                            HikeBadge(name: "Earth Day")
-                                .hueRotation(Angle(degrees: 90))
-                            HikeBadge(name: "Tenth Hike")
-                                .grayscale(0.5)
-                                .hueRotation(Angle(degrees: 45))
-                        }
-                        .padding(.bottom)
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Seasonal Photo").bold()
+
+                Picker("Seasonal Photo", selection: $profile.seasonalPhoto) {
+                    ForEach(Profile.Season.allCases) { season in
+                        Text(season.rawValue).tag(season)
                     }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+            }
 
-                Divider()
-
-                VStack(alignment: .leading) {
-                    Text("Recent Hikes")
-                        .font(.headline)
-
-                    HikeView(hike: modelData.hikes[0])
-                }
+            DatePicker(selection: $profile.goalDate, in: dateRange, displayedComponents: .date) {
+                Text("Goal Date").bold()
             }
         }
     }
 }
 
-struct ProfileSummary_Previews: PreviewProvider {
+struct ProfileEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileSummary(profile: Profile.default)
-            .environmentObject(ModelData())
+        ProfileEditor(profile: .constant(.default))
     }
 }
-
-
