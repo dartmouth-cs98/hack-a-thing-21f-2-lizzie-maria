@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/26/21.
 //
+// Description: An editable profile view.
+//
 
 import SwiftUI
 

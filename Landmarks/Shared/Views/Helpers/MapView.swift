@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A view that presents a map of a landmark.
+//
 
 import SwiftUI
 import MapKit

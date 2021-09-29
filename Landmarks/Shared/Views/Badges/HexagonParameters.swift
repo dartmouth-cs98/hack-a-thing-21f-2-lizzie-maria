@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/25/21.
 //
+// Description: Size, position, and other information used to draw a badge.
+//
 
 import Foundation
 import CoreGraphics

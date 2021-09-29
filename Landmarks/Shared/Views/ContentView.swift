@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A view showing featured landmarks above a list of all of the landmarks.
+//
 
 import SwiftUI
 

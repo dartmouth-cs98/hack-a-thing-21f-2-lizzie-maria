@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A button that acts as a favorites indicator.
+//
 
 import SwiftUI
 

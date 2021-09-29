@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A single row to be displayed in a list of landmarks.
+//
 
 import SwiftUI
 

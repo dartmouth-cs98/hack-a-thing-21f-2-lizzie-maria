@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/25/21.
 //
+// Description: A view that displays the background of a badge.
+//
 
 import SwiftUI
 

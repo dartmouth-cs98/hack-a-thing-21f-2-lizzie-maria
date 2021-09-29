@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/26/21.
 //
+// Description: A detail view for a landmark suitable for display on a Watch.
+//
 
 import SwiftUI
 

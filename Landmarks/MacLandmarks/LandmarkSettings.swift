@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/28/21.
 //
+// Description: The settings view for the app.
+//
 
 import SwiftUI
 

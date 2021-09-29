@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/26/21.
 //
+// Description: The content for the macOS app.
+//
 
 import SwiftUI
 

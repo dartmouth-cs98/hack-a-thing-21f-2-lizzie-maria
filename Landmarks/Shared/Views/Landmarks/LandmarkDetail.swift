@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A view showing the details for a landmark.
+//
 
 import SwiftUI
 

@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/26/21.
 //
+// Description: A view showing a single category item.
+//
 
 import SwiftUI
 

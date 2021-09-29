@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/26/21.
 //
+// Description: A view that hosts the profile viewer and editor.
+//
 
 import SwiftUI
 

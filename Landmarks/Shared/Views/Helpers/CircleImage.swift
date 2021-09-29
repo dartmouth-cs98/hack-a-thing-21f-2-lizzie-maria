@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A view that clips an image to a circle and adds a stroke and shadow.
+//
 
 import SwiftUI
 

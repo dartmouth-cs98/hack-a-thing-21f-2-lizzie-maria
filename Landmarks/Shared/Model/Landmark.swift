@@ -4,6 +4,8 @@
 //
 //  Created by Maria Paula Mora on 9/24/21.
 //
+// Description: A representation of a single landmark.
+//
 
 import Foundation
 import SwiftUI
