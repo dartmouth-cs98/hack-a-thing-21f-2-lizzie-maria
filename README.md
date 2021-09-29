@@ -18,6 +18,7 @@ Detailed view of a location
 
 
 When the star is selected in the detailed view, the location is marked as a favorite. This allows the list view to sort the into a separate list
+
 <img src="Images/Favorites.png" alt="Favorites" width="200"/>
 
 The featured view, with a horizontal scroll
